@@ -12,3 +12,10 @@ export const SigninValidation = z.object({
     password: z.string().min(8, {message: 'Пароль должен содержать минимум 8 символов'})
 })
 
+export const PostValidation = z.object({
+    caption: z.string().min(5).max(2200),
+    file: z.custom<File[]>(),
+    location: z.string().min(2).max(100),
+    tags: z.string(),
+})
+
