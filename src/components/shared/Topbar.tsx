@@ -3,6 +3,7 @@ import {Button} from "@/components/ui/button.tsx";
 import {useSignOutAccount} from "@/lib/react-query/queriesAndMutations.ts";
 import {useEffect} from "react";
 import {useUserContext} from "@/context/AuthContext.tsx";
+import Loader from "@/components/shared/Loader.tsx";
 
 const Topbar = () => {
     const {mutate: signOut, isSuccess} = useSignOutAccount();
@@ -10,7 +11,7 @@ const Topbar = () => {
     const {user} = useUserContext();
 
     useEffect(() => {
-        if(isSuccess) navigate(0);
+        if (isSuccess) navigate(0);
     }, [isSuccess])
 
     return (
@@ -34,13 +35,18 @@ const Topbar = () => {
                             alt="logout"
                         />
                     </Button>
-                    <Link to={`/profile/${user.id}`} className="flex-center gap-3">
-                        <img
-                            src={user.imageUrl || '/assets/icons/profile-placeholder.svg'}
-                            alt="profile"
-                            className="h-8 w-8 rounded-full"
-                        />
-                    </Link>
+
+                    {!user.imageUrl ? (
+                        <Loader/>
+                    ) : (
+                        <Link to={`/profile/${user.id}`} className="flex-center gap-3">
+                            <img
+                                src={user.imageUrl || '/assets/icons/profile-placeholder.svg'}
+                                alt="profile"
+                                className="h-8 w-8 rounded-full"
+                            />
+                        </Link>
+                    )}
                 </div>
             </div>
         </section>
