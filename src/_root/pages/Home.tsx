@@ -4,7 +4,8 @@ import {Models} from "appwrite";
 import PostCard from "@/components/shared/PostCard.tsx";
 
 const Home = () => {
-    const {data: posts, isPending: isPostLoading, isError: isErrorPost} = useGetRecentPost();
+    // isError: isErrorPost
+    const {data: posts, isPending: isPostLoading} = useGetRecentPost();
     return (
         <div className="flex flex-1">
             <div className="home-container">
