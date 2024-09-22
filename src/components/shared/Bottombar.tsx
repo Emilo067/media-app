@@ -1,4 +1,4 @@
-import {NavLink, useLocation} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import {bottombarLinks} from "@/constants";
 import {INavLink} from "@/types";
 
@@ -10,10 +10,10 @@ const Bottombar = () => {
             {bottombarLinks.map((link: INavLink) => {
                 const isActive = pathname === link.route;
 
-                return <NavLink
+                return <Link
                     to={link.route}
                     key={link.label}
-                    className={`${isActive && 'bg-primary-500 rounded-[10px]'} 
+                    className={`${isActive && 'bg-primary-500 rounded-[10px]'}
                     flex-center flex-col gap-1 p-2 transition`}
                 >
                     <img
@@ -24,7 +24,7 @@ const Bottombar = () => {
                         className={`${isActive && 'invert-white'}`}
                     />
                     <p className="tiny-medium text-light-2">{link.label}</p>
-                </NavLink>
+                </Link>
             })}
         </div>
     );

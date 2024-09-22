@@ -3,7 +3,6 @@ import {Button} from "@/components/ui/button.tsx";
 import {useSignOutAccount} from "@/lib/react-query/queriesAndMutations.ts";
 import {useEffect} from "react";
 import {useUserContext} from "@/context/AuthContext.tsx";
-import Loader from "@/components/shared/Loader.tsx";
 
 const Topbar = () => {
     const {mutate: signOut, isSuccess} = useSignOutAccount();
@@ -36,9 +35,7 @@ const Topbar = () => {
                         />
                     </Button>
 
-                    {!user.imageUrl ? (
-                        <Loader/>
-                    ) : (
+
                         <Link to={`/profile/${user.id}`} className="flex-center gap-3">
                             <img
                                 src={user.imageUrl || '/assets/icons/profile-placeholder.svg'}
@@ -46,7 +43,6 @@ const Topbar = () => {
                                 className="h-8 w-8 rounded-full"
                             />
                         </Link>
-                    )}
                 </div>
             </div>
         </section>

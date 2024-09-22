@@ -5,7 +5,6 @@ import {useEffect} from "react";
 import {sidebarLinks} from "@/constants";
 import {INavLink} from "@/types";
 import {Button} from "@/components/ui/button.tsx";
-import Loader from "@/components/shared/Loader.tsx";
 
 const LeftSidebar = () => {
     const {mutate: signOut, isSuccess} = useSignOutAccount();
@@ -29,9 +28,6 @@ const LeftSidebar = () => {
                     />
                 </Link>
 
-                {!user.username || !user.imageUrl ? (
-                    <Loader/>
-                ) : (
                     <Link to={`/profile/${user.id}`} className="flex gap-3 items-center">
                         <img
                             src={user.imageUrl || "/assets/icons/profile-placeholder.svg"}
@@ -47,7 +43,6 @@ const LeftSidebar = () => {
                             </p>
                         </div>
                     </Link>
-                )}
 
 
                 <ul className="flex flex-col gap-6">
