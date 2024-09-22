@@ -1,5 +1,5 @@
-import {useGetPostById} from "@/lib/react-query/queriesAndMutations.ts";
-import {Link, useParams} from "react-router-dom";
+import {useDeletePost, useGetPostById} from "@/lib/react-query/queriesAndMutations.ts";
+import {Link, useNavigate, useParams} from "react-router-dom";
 import Loader from "@/components/shared/Loader.tsx";
 import {multiFormatDateString} from "@/lib/utils.ts";
 import {useUserContext} from "@/context/AuthContext.tsx";
@@ -8,11 +8,16 @@ import PostStats from "@/components/shared/PostStats.tsx";
 
 const PostDetails = () => {
     const {id} = useParams();
+    const navigate = useNavigate();
     const {data: post, isPending} = useGetPostById(id || '');
+    const {mutate: deletePost} = useDeletePost();
     const {user} = useUserContext();
 
     const handleDeletePost = () => {
-
+        if(post && id) {
+            deletePost({postId: id, imageId: post.imageId});
+        }
+        navigate(-1);
     }
 
     return (

@@ -137,7 +137,7 @@ const PostForm = ({post, action}: PostFormPost) => {
                         Cancel
                     </Button>
                     <Button
-                        className="shad-button_primary whitespace-nowrap"
+                        className={`shad-button_primary whitespace-nowrap ${isLoadingUpdate || isLoadingCreate && 'pointer-events-none'}`}
                         type="submit"
                     >
                         {isLoadingCreate || isLoadingUpdate && 'Loading...'}
