@@ -7,12 +7,12 @@ import {Input} from "@/components/ui/input.tsx";
 import {SignupValidation} from "@/lib/validation";
 import Loader from "@/components/shared/Loader.tsx";
 import {Link, useNavigate} from "react-router-dom";
-import { useToast } from "@/hooks/use-toast";
+import {useToast} from "@/hooks/use-toast";
 import {useCreateUserAccount, useSignInAccount} from "@/lib/react-query/queriesAndMutations.ts";
 import {useUserContext} from "@/context/AuthContext.tsx";
 
 const SignupForm = () => {
-    const { toast } = useToast();
+    const {toast} = useToast();
     // isLoading: isUserLoading
     const {checkAuthUser} = useUserContext();
     const navigate = useNavigate();
@@ -34,25 +34,25 @@ const SignupForm = () => {
     async function onSubmit(values: z.infer<typeof SignupValidation>) {
         const newUser = await createUserAccount(values);
 
-        if(!newUser) {
-            return toast({ title: 'Sign up failed. Please try again.'});
+        if (!newUser) {
+            return toast({title: 'Sign up failed. Please try again.'});
         }
 
-       const session = await signInAccount({
-           email: values.email,
-           password: values.password,
-       });
+        const session = await signInAccount({
+            email: values.email,
+            password: values.password,
+        });
 
-        if(!session) {
+        if (!session) {
             return toast({title: 'Sign in failed. Please try again.'});
         }
 
         const isLoggedIn = await checkAuthUser();
 
         if (isLoggedIn) {
-           form.reset();
+            form.reset();
 
-           navigate('/');
+            navigate('/');
         } else {
             return toast({title: 'Sign up failed. Please try again'});
         }
@@ -61,11 +61,15 @@ const SignupForm = () => {
     return (
         <Form {...form}>
             <div className="sm:w-420 flex-center flex-col">
-                <img
-                    src="/assets/images/logo.svg"
-                    alt="logo"
-                />
-
+                <div className="flex items-center justify-center gap-2">
+                    <img
+                        src="/assets/icons/logo.svg"
+                        alt="logo"
+                    />
+                    <span className="text-light-1 h3-bold">
+                        Postgram
+                    </span>
+                </div>
                 <h3 className="h3-bold md:h2-bold pt-5 sm:pt-12">Create a new account</h3>
                 <p className="text-light-3 small-medium md:base-regular mt-2">
                     To use Snapgram, please enter your details
@@ -127,9 +131,9 @@ const SignupForm = () => {
                     <Button type="submit" className="shad-button_primary">
                         {isCreatingAccount ? (
                             <div className="flex-center gap-2">
-                               <Loader /> Loading...
+                                <Loader/> Loading...
                             </div>
-                        ): "Sign up"}
+                        ) : "Sign up"}
                     </Button>
 
                     <p className="text-small-regular text-light-2 text-center mt-2">
