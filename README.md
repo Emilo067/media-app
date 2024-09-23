@@ -1,50 +1,34 @@
-# React + TypeScript + Vite
+# Postgram
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Postgram** is a social media platform that allows users to share posts, view others' content, and interact with the community. Built with a modern tech stack, Postgram ensures fast performance and a smooth user experience.
 
-Currently, two official plugins are available:
+## Tech Stack
+- **React (TypeScript)**: Frontend framework for building a dynamic user interface.
+- **Tanstack Query**: For efficient data fetching and state management.
+- **Appwrite**: Backend-as-a-service for authentication, database, and storage.
+- **Tailwind CSS**: Utility-first CSS framework for building responsive, modern UIs.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
+- Create, edit, and delete posts.
+- View and interact with posts from other users.
+- Responsive design for mobile and desktop views.
+- Real-time updates and efficient data fetching with Tanstack Query.
 
-## Expanding the ESLint configuration
+## Installation
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/postgram.git
+2. Navigate to the project directory:
+   ```bash
+   cd postgram
+3. Install dependencies:
+   ```bash
+   npm install
+5. Run the application:
+   ```bash
+   npm start
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## Usage
+- After running the application, you can sign up, create posts, and browse content from other users.
+- Enjoy real-time updates and responsive design powered by Tailwind CSS and Tanstack Query.
